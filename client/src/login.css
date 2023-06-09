@@ -1,0 +1,24 @@
+/* login.css */
+
+.bg-gradient {
+    background-image: linear-gradient(to right, #4A148C, #880E4F);
+  }
+  
+  .input-field {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+  }
+  /* login.css */
+
+
+
+/* .text-gradient {
+    background: linear-gradient(to right, #4A148C, #880E4F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+   */
