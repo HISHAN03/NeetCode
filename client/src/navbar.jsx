@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { UserContext } from './UserContex';
 import  { useState } from 'react';
 import axios from 'axios';
+
+
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -48,7 +50,7 @@ const Navbar = () => {
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg overflow-hidden shadow-xl">
                 <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100">
-                  Profile
+                  profile
                 </button>
                 <button className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100" onClick={handleLogout}>
                Logout
