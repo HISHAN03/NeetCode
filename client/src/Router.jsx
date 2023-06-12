@@ -2,11 +2,12 @@ import {useContext} from "react";
 import {UserContext} from "./UserContex.jsx";
 import React from "react"
 import Logreg from "./loginANDregister.jsx";
+import Home from "./home.jsx"
 export default function Routes() {
-  const {username, id} = useContext(UserContext);
+  const {Username, Id} = useContext(UserContext);
 
-  if (username) {
-    return <h1>logged in</h1>;
+  if (Username) {
+    return <Home />;
   }
 
   return (

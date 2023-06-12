@@ -11,22 +11,18 @@ function Login()
   const [iSLoginOrRegister,SetiSLoginOrRegister]=useState('login')
   const {setUsername:setLoggedInUsername, setId} = useContext(UserContext);
 
-  async function handleSubmit(ev) 
-  {
+  async function handleSubmit(ev) {
     ev.preventDefault();
-    const url = iSLoginOrRegister === 'register' ? '/register' : '/login'; 
-    try{
-      console.log(Username)
-      const { data } = await axios.post(url, { Username, Password });
+    const url = iSLoginOrRegister === 'register' ? '/register' : '/login';
+    try {
+      const { data } = await axios.post(url, { Username, Password }, { withCredentials: true });
       setLoggedInUsername(Username);
-       setId(data.id);
+      setId(data.id);
       console.log("done");
+    } catch (err) {
+      console.log(err);
     }
-    catch(err)
-    {
-      console.log(err)
-
-    }} 
+  }
 
   return (
     <div className="bg-gradient h-screen flex flex-col items-center justify-center">

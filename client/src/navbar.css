@@ -1,0 +1,51 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #52b69a;
+    padding: 10px 20px;
+  }
+  
+  .navbar__logo {
+    color: white;
+    font-size: 24px;
+  }
+  
+  .navbar__menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar__menu-item {
+    margin-right: 20px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .navbar__user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .navbar__user-emoji {
+    font-size: 24px;
+    margin-right: 10px;
+    color: white;
+  }
+  
+  .navbar__user-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background-color: #52b69a;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .navbar__user-name {
+    color: white;
+  }
+  
