@@ -119,6 +119,23 @@ app.get("/questions", async (req, res) => {
   }
 });
 
+app.post('/logout', (req,res) => {
+  res.clearCookie("token");
+res.status(200).json("Logged out successfully");
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

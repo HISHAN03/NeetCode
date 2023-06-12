@@ -5,7 +5,7 @@ import Navbar from './navbar';
 const Home = () => {
   const [questions, setQuestions] = useState([]);
   const { Username, Id, setId, setUsername } = useContext(UserContext);
-
+  
   useEffect(() => {
     fetchQuestions();
   }, []);
