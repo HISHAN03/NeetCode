@@ -15,13 +15,14 @@ const User = require("./Schema/signup");
 const Questions = require("./Schema/questions");
 
 mongoose.connect("mongodb+srv://hishan:1234@cluster0.sksy2nt.mongodb.net/?retryWrites=true&w=majority")
-  .then(() => {
+.then(() => {
     console.log("mongodb-connected");
   })
   .catch((err) => {
     console.error("Failed to connect to MongoDB:", err);
   });
 
+app.use(express.json());
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
@@ -126,16 +127,33 @@ res.status(200).json("Logged out successfully");
 });
 
 
+app.get('/questions/:id', async (req, res) => {
+  const { id } = req.params;
+  const question = await Questions.findById(id);
+  if (!question) {
+    return res.status(404).json({ error: 'Question not found' });
+  }
+  res.json(question);
+});
 
 
-
-
-
-
-
-
-
-
+app.post('/questions/:id/check', async(req, res) => {
+  const { id } = req.params;
+  const { answer } = req.body;
+  console.log(answer)
+  const question = await Questions.findById(id);
+  if (!question) {
+    return res.status(404).json({ error: 'Question not found' });
+  }
+  const correctAnswer =question.output[0];
+  console.log(correctAnswer)
+  
+  if (answer === correctAnswer) {
+    res.json('correct');
+  } else {
+    res.json('wrong');
+  }
+});
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

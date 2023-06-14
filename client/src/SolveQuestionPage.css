@@ -1,0 +1,98 @@
+.solve-question-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .question-container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .question-description {
+    margin-bottom: 20px;
+  }
+  
+  .answer-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .answer-textarea {
+    height: 100px;
+    padding: 5px;
+    margin-bottom: 10px;
+    resize: none;
+  }
+  
+  .submit-button {
+    padding: 10px 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:focus {
+    outline: none;
+    box-shadow: 0 0 3px 3px rgba(76, 175, 80, 0.3);
+  }
+  
+  
+
+  .output-section {
+    margin-top: 20px;
+  }
+  
+  .output-section h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .output-section p {
+    font-size: 1rem;
+  }
+  
+  /* Additional colors */
+  .submit-button.secondary {
+    background-color: #2196f3;
+  }
+  
+  .submit-button.secondary:hover {
+    background-color: #1976d2;
+  }
+  
+  .submit-button.secondary:focus {
+    box-shadow: 0 0 3px 3px rgba(33, 150, 243, 0.3);
+  }
+  
+  .submit-button.warning {
+    background-color: #ff9800;
+  }
+  
+  .submit-button.warning:hover {
+    background-color: #f57c00;
+  }
+  
+  .submit-button.warning:focus {
+    box-shadow: 0 0 3px 3px rgba(255, 152, 0, 0.3);
+  }
+  
