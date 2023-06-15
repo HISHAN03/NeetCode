@@ -26,7 +26,7 @@ const SolveQuestionPage = () => {
     setUserAnswer(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => {s
     e.preventDefault();
     axios
       .post(`/questions/${id}/check`, { answer: userAnswer }) // Send the answer in the request body

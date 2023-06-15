@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import AdminQ from './admin-questions'
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -26,6 +26,7 @@ const AdminLogin = () => {
       .then((response) => {
         console.log(response.data);
         // Handle successful login
+        setIsLoggedIn(true);
       })
       .catch((error) => {
         console.error(error);
@@ -34,7 +35,11 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <> {isLoggedIn ? (
+      <AdminQ />
+    ) : (
+    
+        <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
@@ -58,6 +63,7 @@ const AdminLogin = () => {
         </div>
       </div>
     </div>
+    )}</>
   );
 };
 

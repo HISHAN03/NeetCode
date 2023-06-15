@@ -21,6 +21,8 @@ function App() {
         <Routes>
         <Route exact path="/" element={<Wwe />} />
           <Route path="/solve" element={<Home />} />
+          <Route path="/solve/:id" element={<SolveQuestionPage />} />
+
           <Route path="/admin" element={<Admin />} />
 
           

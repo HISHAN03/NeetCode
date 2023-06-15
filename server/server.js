@@ -13,7 +13,6 @@ const bodyParser = require('body-parser');
 const jwtSecret = "hyceefrwefewfswadcasddhuwgduwhduw";
 const User = require("./Schema/signup");
 const Questions = require("./Schema/questions");
-
 mongoose.connect("mongodb+srv://hishan:1234@cluster0.sksy2nt.mongodb.net/?retryWrites=true&w=majority")
 .then(() => {
     console.log("mongodb-connected");
@@ -167,6 +166,25 @@ app.post('/admin-login', (req, res) => {
   } else {
     // Invalid credentials
     res.status(401).json({ success: false, message: 'Invalid credentials' });
+  }
+});
+app.post('/add-question', async (req, res) => {
+  try {
+    const { title, description, output } = req.body;
+
+    // Create a new question instance
+    const newQuestion = new Questions({
+      title,
+      description,
+      output
+    });
+
+    // Save the question to the database
+    await newQuestion.save();
+
+    res.status(200).json({ message: 'Question added successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while adding the question' });
   }
 });
 
