@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from './UserContex';
+import { UserContext } from '../UserContex';
 import  { useState } from 'react';
 import axios from 'axios';
 
@@ -35,6 +35,12 @@ const Navbar = () => {
           <div>
             <span className="text-white text-xl font-semibold">My Website</span>
           </div>
+          <div className="text-white text- font-semibold">
+                <Link to="/solve">All Questions</Link>
+              </div>
+              <div className="text-white text- font-semibold">
+                <Link to="/admin">Admin login</Link>
+              </div>
           <div>
             <button className="text-white focus:outline-none" onClick={toggleDropdown}>
               <svg

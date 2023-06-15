@@ -1,11 +1,13 @@
 import axios from "axios";
-import { UserContextProvider } from "./UserContex";
+import { UserContextProvider } from "./pages/UserContex";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./home";
-import Wwe from "./Router";
+import Wwe from "./pages/Router";
+import Home from "./pages/home";
+import Admin from "./pages/admin";
 
-import SolveQuestionPage from "./solveQuestions";
+
+import SolveQuestionPage from "./pages/solveQuestions";
 
 
 
@@ -18,7 +20,10 @@ function App() {
       <BrowserRouter>
         <Routes>
         <Route exact path="/" element={<Wwe />} />
-          <Route path="/solve/:id" element={<SolveQuestionPage />} />
+          <Route path="/solve" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
+
+          
           
           </Routes>
       </BrowserRouter>

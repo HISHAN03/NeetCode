@@ -154,6 +154,36 @@ app.post('/questions/:id/check', async(req, res) => {
     res.json('wrong');
   }
 });
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.post('/admin-login', (req, res) => {
+  const { username, password } = req.body;
+
+  if (username === 'hishan' && password === '1234') {
+    // Successful login
+    res.json({ success: true, message: 'Login successful' });
+  } else {
+    // Invalid credentials
+    res.status(401).json({ success: false, message: 'Invalid credentials' });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

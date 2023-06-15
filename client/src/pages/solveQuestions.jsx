@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./SolveQuestionPage.css"; // Import the CSS file for styling
-
+import "../style/SolveQuestionPage.css";
+import Navbar from "./components/navbar";
 const SolveQuestionPage = () => {
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
@@ -38,9 +38,9 @@ const SolveQuestionPage = () => {
         console.error(error);
       });
   };
-  
-
   return (
+    <>
+    <Navbar />
     <div className="solve-question-page">
       {question ? (
         <div className="question-container">
@@ -53,7 +53,7 @@ const SolveQuestionPage = () => {
               value={userAnswer}
               onChange={handleAnswerChange}
               className="answer-textarea" 
-            ></textarea>
+              ></textarea>
             <button type="submit" className="submit-button">Submit Answer</button> 
           </form>
           {output && (
@@ -65,8 +65,9 @@ const SolveQuestionPage = () => {
         </div>
       ) : (
         <p>Loading question...</p>
-      )}
+        )}
     </div>
+        </>
   );
 };
 

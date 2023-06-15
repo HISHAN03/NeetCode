@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import './login.css';
+import '../style/login.css';
 import {useContext} from "react";
 import {UserContext} from "./UserContex.jsx";
 
@@ -21,8 +21,8 @@ function Login()
       console.log("done");
     } catch (err) {
       console.log(err);
-    }
-  }
+    }}
+    
 
   return (
     <div className="bg-gradient h-screen flex flex-col items-center justify-center">

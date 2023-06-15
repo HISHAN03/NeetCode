@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { UserContext } from './UserContex';
-import Navbar from './navbar';
+import Navbar from './components/navbar';
 import { Link } from 'react-router-dom';
-import './home.css';
+import '../style/home.css';
 
 const Home = () => {
   const [questions, setQuestions] = useState([]);
