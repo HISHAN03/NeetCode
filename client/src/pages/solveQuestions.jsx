@@ -7,7 +7,7 @@ const SolveQuestionPage = () => {
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
   const [userAnswer, setUserAnswer] = useState("");
-  const [output, setOutput] = useState(null); // New state for the output
+  const [output, setOutput] = useState(null); 
 
   useEffect(() => {
     fetchQuestion();
@@ -29,9 +29,8 @@ const SolveQuestionPage = () => {
   const handleSubmit = (e) => {s
     e.preventDefault();
     axios
-      .post(`/questions/${id}/check`, { answer: userAnswer }) // Send the answer in the request body
+      .post(`/questions/${id}/check`, { answer: userAnswer }) 
       .then((response) => {
-        //console.log(answer);
         setOutput(response.data);
       })
       .catch((error) => {

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import AdminQ from './admin-questions'
-const AdminLogin = () => {
+const AdminLogin = () => 
+{
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -19,20 +22,19 @@ const AdminLogin = () => {
     const data = {
       username: username,
       password: password
-    };
+                 };
 
-    axios
-      .post('/admin-login', data)
-      .then((response) => {
+    axios.post('/admin-login', data).then((response) => 
+    {
         console.log(response.data);
         // Handle successful login
         setIsLoggedIn(true);
+        navigate('/edit_delet');
       })
       .catch((error) => {
         console.error(error);
         // Handle login error
-      });
-  };
+      });};
 
   return (
     <> {isLoggedIn ? (

@@ -79,22 +79,22 @@ app.post("/login", async (req, res) => {
   try {
     const foundUser = await User.findOne({ username: Username });
     if (foundUser) {
-      const passOk = bcrypt.compareSync(Password, foundUser.password);
-      if (passOk) {
+    const passOk = bcrypt.compareSync(Password, foundUser.password);
+    if (passOk) {
         jwt.sign(
           { userId: foundUser._id, Username },
           jwtSecret,
           {},
           (err, token) => {
-            if (err) {
-              console.log(err);
+              if (err) {
+               console.log(err);
               res.status(500).json("Error signing token");
-            } else {
+              } else {
               res
-                .cookie("token", token, { sameSite: "none", secure: true })
-                .json({ id: foundUser._id });
+              .cookie("token", token, { sameSite: "none", secure: true })
+              .json({ id: foundUser._id });
               console.log("Login successful");
-            }
+          }
           }
         );
       } else {
@@ -113,17 +113,19 @@ app.get("/questions", async (req, res) => {
   try {
     const questions = await Questions.find();
     res.json(questions);
-  } catch (error) {
+      }
+  catch (error) 
+     {
     console.error("Failed to fetch questions:", error);
     res.status(500).json({ error: "Failed to fetch questions" });
-  }
-});
+    }});
 
-app.post('/logout', (req,res) => {
+
+app.post('/logout', (req,res) => 
+  {
   res.clearCookie("token");
-res.status(200).json("Logged out successfully");
-
-});
+  res.status(200).json("Logged out successfully");
+  });
 
 
 app.get('/questions/:id', async (req, res) => {
@@ -190,6 +192,16 @@ app.post('/add-question', async (req, res) => {
 
 
 
+app.get('/delete-question/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Questions.findByIdAndDelete(id);
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
 
 
 

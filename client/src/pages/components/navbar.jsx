@@ -4,10 +4,9 @@ import { UserContext } from '../UserContex';
 import  { useState } from 'react';
 import axios from 'axios';
 
-
-const Navbar = () => {
+const Navbar = () => 
+  {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
