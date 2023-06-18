@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const AddQuestionPage = () => {
+  const location = useLocation();
+  const question = location.state?.question;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [output, setOutput] = useState('');
+
+  useEffect(() => {
+    if (question) {
+      setTitle(question.title || '');
+      setDescription(question.description || '');
+      setOutput(question.output || '');
+    }
+  }, [question]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

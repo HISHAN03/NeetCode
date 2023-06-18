@@ -4,10 +4,27 @@ import { UserContext } from './UserContex';
 import Navbar from './components/navbar';
 import { Link } from 'react-router-dom';
 import '../style/home.css';
-
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const [questions, setQuestions] = useState([]);
   const { Username } = useContext(UserContext);
+
+  const editQuestion = async (questionId) => {
+    try {
+      const response = await axios.get(`/questions/${questionId}`);
+      const editedQuestion = response.data;
+      redirectToAddQuestion(editedQuestion);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const redirectToAddQuestion = (question) => {
+    console.log(question)
+    const navigate = useNavigate();
+    navigate('/add_questions', { state: { question: question } });
+  };
+
+
 
   useEffect(() => {
     fetchQuestions();
@@ -37,6 +54,8 @@ const Home = () => {
 
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-5">
         <h1 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-5">Questions</h1>
+        <Link to={`/add_questions`} className="text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-5">ADD-Questions</Link>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {questions.length ? (
             questions.map((question) => (
@@ -46,12 +65,7 @@ const Home = () => {
               >
                 <h5 className="text-lg font-medium text-gray-900 mb-2">{question.title}</h5>
                 <p className="mt-2 text-base text-gray-500 mb-4">{question.description}</p>
-                <Link
-                  to={`/solve/${question._id}`}
-                  className="mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Solve this question
-                </Link>
+  
                 <button
                   className="mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                   onClick={() => deleteQuestion(question._id)}
@@ -61,7 +75,8 @@ const Home = () => {
                 <Link
                   to={`/edit/${question._id}`}
                   className="mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
-                >
+                  onClick={() => editQuestion(question._id)}
+               >
                   Edit
                 </Link>
               </div>

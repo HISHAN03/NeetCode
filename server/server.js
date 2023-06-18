@@ -195,7 +195,7 @@ app.post('/add-question', async (req, res) => {
 app.get('/delete-question/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await Questions.findByIdAndDelete(id);
+   await Questions.findByIdAndDelete(id);
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
@@ -204,6 +204,24 @@ app.get('/delete-question/:id', async (req, res) => {
 });
 
 
+app.get('/edit/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    // Fetch the question from the database based on the provided ID
+    const question = await Questions.findById(id);
+
+    if (!question) {
+      // If the question is not found, return a 404 status
+      return res.sendStatus(404);
+    }
+
+    // Return the question as the response
+    res.json(question);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
 
 
 
