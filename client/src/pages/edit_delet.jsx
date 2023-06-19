@@ -53,10 +53,8 @@ const Home = () => {
       <Navbar />
 
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-5">
-        <h1 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-5">Questions</h1>
-        <Link to={`/add_questions`} className="text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-5">
-          ADD-Questions
-        </Link>
+ 
+
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {questions.length ? (
@@ -81,12 +79,22 @@ const Home = () => {
                   Edit
                 </button>
               </div>
+              
             ))
           ) : (
             <p className="text-center">No questions found.</p>
           )}
-        </div>
+      <div className="col-span-3 flex justify-center">
+        <button
+          className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-800 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          <Link to={`/add_questions`} className="text-lg font-extrabold tracking-tight text-white sm:text-xl">
+            ADD-Questions
+          </Link>
+        </button>
       </div>
+    </div>
+  </div>
     </>
   );
 };

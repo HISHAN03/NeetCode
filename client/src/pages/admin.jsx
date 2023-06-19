@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import AdminQ from './admin-questions'
-const AdminLogin = () => 
-{
+import AdminQ from './admin-questions';
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+
+const AdminLogin = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginError, setLoginError] = useState('');
+
   const handleUsernameChange = (e) => {
-  setUsername(e.target.value);
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -21,11 +25,12 @@ const AdminLogin = () =>
 
     const data = {
       username: username,
-      password: password
-                 };
+      password: password,
+    };
 
-    axios.post('/admin-login', data).then((response) => 
-    {
+    axios
+      .post('/admin-login', data)
+      .then((response) => {
         console.log(response.data);
         // Handle successful login
         setIsLoggedIn(true);
@@ -34,38 +39,67 @@ const AdminLogin = () =>
       .catch((error) => {
         console.error(error);
         // Handle login error
-      });};
+        setLoginError('Invalid username or password');
+      });
+  };
 
   return (
-    <> {isLoggedIn ? (
-      <AdminQ />
-    ) : (
-    
-        <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-header bg-dark text-white text-center">
-              <h4>Admin Login</h4>
-            </div>
-            <div className="card-body">
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <input type="text" name="aname" className="form-control" id="username" placeholder="Enter username" value={username} onChange={handleUsernameChange} />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input type="password" name="apass" className="form-control" id="password" placeholder="Enter password" value={password} onChange={handlePasswordChange} />
-                </div>
-                <button type="submit" id="login-btn" className="btn btn-warning btn-block">Login</button>
-              </form>
-            </div>
+    <>
+    <Navbar />
+      {isLoggedIn ? (
+        <AdminQ />
+      ) : (
+        <div className="flex items-center justify-center h-screen bg-gray-100">
+          <div className="bg-white rounded shadow p-8 max-w-sm w-full">
+            <h2 className="text-2xl font-semibold mb-4">Admin Login</h2>
+            {loginError && (
+              <div className="bg-red-500 text-white text-sm font-semibold rounded p-2 mb-4">
+                {loginError}
+              </div>
+            )}
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label htmlFor="username" className="block font-medium mb-1">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  name="aname"
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                  id="username"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={handleUsernameChange}
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="password" className="block font-medium mb-1">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="apass"
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                  id="password"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+              </div>
+              <button
+                type="submit"
+                id="login-btn"
+                className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              >
+                Login
+              </button>
+            </form>
           </div>
         </div>
-      </div>
-    </div>
-    )}</>
+        
+      )}
+        
+    </>
   );
 };
 
