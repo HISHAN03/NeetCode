@@ -13,7 +13,7 @@ const SolveQuestionPage = () => {
     fetchQuestion();
   }, []);
 
-  const fetchQuestion = async () => {
+  const fetchQuestion = async () =>{
     try {
       const response = await axios.get(`/questions/${id}`);
       setQuestion(response.data);

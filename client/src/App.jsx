@@ -7,8 +7,6 @@ import Home from "./pages/home";
 import Admin from "./pages/admin";
 import Edit from './pages/edit_delet'
 import ADD_questions from './pages/admin-questions'
-import ADD_edit from './pages/admin-questions'
-
 
 import SolveQuestionPage from "./pages/solveQuestions";
 
@@ -27,7 +25,7 @@ function App() {
           <Route path="/solve/:id" element={<SolveQuestionPage />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/add_questions" element={<ADD_questions />} />
-          <Route path="/edit/:id" element={ <ADD_edit />} />
+          <Route path="/edit/:id" element={ <ADD_questions />} />
           <Route path="/edit_delet" element={<Edit />} />
 
           

@@ -11,6 +11,7 @@ const AddQuestionPage = () => {
 
   useEffect(() => {
     if (question) {
+      console.log(question+"this is admin side")
       setTitle(question.title || '');
       setDescription(question.description || '');
       setOutput(question.output || '');
@@ -21,19 +22,34 @@ const AddQuestionPage = () => {
     e.preventDefault();
 
     try {
-      await axios.post('/add-question', {
-        title,
-        description,
-        output
-      });
+      if (question) {
+        // If a question is provided, perform an update
+        await axios.put(`/edit-question/${question._id}`, {
+          title,
+          description,
+          output
+        });
+      } else {
+        // If no question is provided, perform an add operation
+        await axios.post('/add-question', {
+          title,
+          description,
+          output
+        });
+      }
 
       setTitle('');
       setDescription('');
       setOutput('');
+
+      // Invoke the callback function
+console.log("DOEN")
+
     } catch (error) {
       console.error(error);
     }
   };
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

@@ -12,7 +12,9 @@ dotenv.config();
 const bodyParser = require('body-parser');
 const jwtSecret = "hyceefrwefewfswadcasddhuwgduwhduw";
 const User = require("./Schema/signup");
+const methodOverride = require('method-override');
 const Questions = require("./Schema/questions");
+app.use(methodOverride('_method'));
 mongoose.connect("mongodb+srv://hishan:1234@cluster0.sksy2nt.mongodb.net/?retryWrites=true&w=majority")
 .then(() => {
     console.log("mongodb-connected");
@@ -204,10 +206,12 @@ app.get('/delete-question/:id', async (req, res) => {
 });
 
 
-app.get('/edit/:id', async (req, res) => {
+app.put('/edit-question/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    // Fetch the question from the database based on the provided ID
+    const { title, description, output } = req.body;
+
+    // Find the question by ID
     const question = await Questions.findById(id);
 
     if (!question) {
@@ -215,14 +219,21 @@ app.get('/edit/:id', async (req, res) => {
       return res.sendStatus(404);
     }
 
-    // Return the question as the response
-    res.json(question);
+    // Update the question fields
+    question.title = title;
+    question.description = description;
+    question.output = output;
+
+    // Save the updated question
+    const updatedQuestion = await question.save();
+
+    // Return the updated question as the response
+    res.json(updatedQuestion);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
 });
-
 
 
 
