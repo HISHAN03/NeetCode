@@ -10,12 +10,12 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const bodyParser = require('body-parser');
-const jwtSecret = "hyceefrwefewfswadcasddhuwgduwhduw";
+const jwtSecret = process.env.jwtSecret;
 const User = require("./Schema/signup");
 const methodOverride = require('method-override');
 const Questions = require("./Schema/questions");
 app.use(methodOverride('_method'));
-mongoose.connect("mongodb+srv://hishan:1234@cluster0.sksy2nt.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_URL)
 .then(() => {
     console.log("mongodb-connected");
   })
