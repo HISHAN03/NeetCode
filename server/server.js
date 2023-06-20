@@ -26,7 +26,12 @@ mongoose.connect(process.env.MONGO_URL)
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+const corsOptions = {
+  credentials: true,
+  origin: ["https://neet-code.vercel.app/"],
+  allowedHeaders: ["Content-Type"], 
+}
+app.use(cors(corsOptions));
 
 app.get("/profile", (req, res) => {
   const token = req.cookies?.token;
