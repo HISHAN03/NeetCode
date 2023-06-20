@@ -7,7 +7,7 @@ this is a leetcode type clone not a clone exactly only CRUD features are impleam
 - CRUD🌐
 - add questions and solve questions 🔧
 - Easy installation: Quickly set up the app locally by cloning the repository and running `npm install`. ⚙️🚀
-
+  
 ## Installation 🛠️
 
 To run NeetCode on your local machine, follow these steps:
@@ -42,6 +42,12 @@ NeetCode utilizes the following technologies:
 - **React**: A powerful JavaScript library for building user interfaces.⚛️🖥️
 - **Node.js**: A runtime environment for executing JavaScript code on the server-side.🚀🔧
 
+## Features to be implemented in future 📄
+- **Redis**:caching 📡
+- **container**:to create a real codespace to execute propper code 🚀
+- **TestCase**:adding test cases to check if the answer is correct 🖥️
+
+  
 ## Contributing
 We welcome contributions from the community to enhance ChatApp further. If you have any ideas or improvements,
 feel free to submit a pull request. Please ensure that your contributions align with our Code of Conduct.✨🤝
