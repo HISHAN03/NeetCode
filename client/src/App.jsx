@@ -13,7 +13,8 @@ import SolveQuestionPage from "./pages/solveQuestions";
 
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:4000";
+ 
+  axios.defaults.baseURL = "https://backend-neetcode.onrender.com";
   axios.defaults.withCredentials = true;
 
   return (
