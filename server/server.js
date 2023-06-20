@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.json());
 const corsOptions = {
   credentials: true,
-  origin: ["https://neet-code.vercel.app/"],
+  origin: ["https://neet-code.vercel.app/","https://neet-code-li2f.vercel.app/"],
   allowedHeaders: ["Content-Type"], 
 }
 app.use(cors(corsOptions));
