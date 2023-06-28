@@ -10,7 +10,7 @@ this is a leetcode type clone not a clone exactly only CRUD features are impleam
   
 ## Installation 🛠️
 
-To run NeetCode on your local machine, follow these steps:
+To run NeetCode on your local machine, u need to follow these steps:
 
 1. Clone the repository:
 
